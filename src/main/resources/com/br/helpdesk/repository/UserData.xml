@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <Client id="1" description="Cymo Tecnologia em Gestão"/>
+
+    <User id="1" name="Rafael Carvalhaes Pôssas" username="rafaelpossas" password="1234" client_id="1" isEnabled="true" user_role="USER"/>
+    <User id="2" name="André Nacácio Goulard" username="andrenacacio" password="1234" client_id="1" isEnabled="true" user_role="USER"/>
+    <User id="3" name="André Sulivam" username="andresulivam" password="1234" client_id="1" isEnabled="true" user_role="USER"/>
+
+    <Ticket id="1" title="Erro de Indicador" description="Problema ao atualizar Indicador" isopen="true" user_id="1" start_date="2013-10-18"/>
+
+</dataset>
