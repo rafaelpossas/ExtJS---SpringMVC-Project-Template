@@ -14,7 +14,7 @@ Ext.define('Helpdesk.view.dashboard.MainHeader', {
     items: [
         {
             xtype: 'label', // #6
-            html: '<div id="titleHeader">Video Store Manager<span style="font-size:12px;"> - Mastering Ext JS</span></div>'
+            html: '<div id="titleHeader">Help Desk Application<span style="font-size:12px;"> - Template</span></div>'
         },
         '->',
         '-',
