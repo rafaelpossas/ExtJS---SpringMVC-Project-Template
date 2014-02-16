@@ -43,7 +43,7 @@ Ext.define('Helpdesk.view.login.Login', {
                         },
                         {
                             xtype: "image",
-                            src: translations.PROCYMO_LOGO,
+                            src: homeURL + translations.PROCYMO_LOGO,
                             border: 0,
                             padding: "0 0 15 0",
                             height: 80

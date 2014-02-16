@@ -1,9 +1,7 @@
 /**
- * Created with IntelliJ IDEA.
  * User: rafaelpossas
  * Date: 10/21/13
  * Time: 12:56 PM
- * To change this template use File | Settings | File Templates.
  */
 
 Ext.application({
@@ -12,12 +10,12 @@ Ext.application({
     enableQuickTips: true,
     appProperty: 'Current', 
     controllers: [
-        'Users', 'Login', 'Translation','Dashboard'
+        'Users', 'Login', 'Translation','Home'
     ],
     init: function() {
     },
     launch: function() {
         this.viewport = Ext.create('Helpdesk.view.Viewport');
-        Helpdesk.util.SessionMonitor.start();
+        Helpdesk.util.SessionMonitor.start(); // Starts the session monitor
     }
 });

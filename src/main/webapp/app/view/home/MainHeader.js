@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Ext.define('Helpdesk.view.dashboard.MainHeader', {
+Ext.define('Helpdesk.view.home.MainHeader', {
     extend: 'Ext.toolbar.Toolbar', // #1
     alias: 'widget.mainheader', // #2
 

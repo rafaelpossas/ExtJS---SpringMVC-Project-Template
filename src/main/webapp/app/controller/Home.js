@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Ext.define('Helpdesk.controller.Dashboard',{
+Ext.define('Helpdesk.controller.Home',{
    extend: 'Ext.app.Controller',
-   views: ['dashboard.Dashboard'],
+   views: ['home.Home'],
    init: function(){
        this.control({
            'mainviewport':{

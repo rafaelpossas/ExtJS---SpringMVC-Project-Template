@@ -9,9 +9,7 @@ Ext.define('Helpdesk.view.Viewport', {
   alias: 'widget.mainviewport',
   items: [
       {
-          xtype: 'dashboard'
+          xtype: 'home'
       }
-  ],
-  afterLayout: function(layout){
-  }
+  ]
 });

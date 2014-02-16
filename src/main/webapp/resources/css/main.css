@@ -20,29 +20,29 @@
 }
 
 .pt_BR {
-  background-image:url('/resources/img/pt_BR.png') !important;
+  background-image:url('../img/pt_BR.png') !important;
 }
 .en{
-  background-image:url('/resources/img/en.png') !important;
+  background-image:url('../img/en.png') !important;
 }
 
 .es {
-  background-image:url('/resources/img/es.png') !important;
+  background-image:url('../img/es.png') !important;
 }
 .key {
-  background-image:url('/resources/img/login_24.png') !important;
+  background-image:url('../img/login_24.png') !important;
 }
 .cancel_24 {
-  background-image:url('/resources/img/cancel_24.png') !important;
+  background-image:url('../img/cancel_24.png') !important;
 }
 .cancel_16 {
-  background-image:url('/resources/img/cancel_16.png') !important;
+  background-image:url('../img/cancel_16.png') !important;
 }
 .submit_16{
-  background-image:url('/resources/img/submit_16.png') !important;
+  background-image:url('../img/submit_16.png') !important;
 }
 .capslock{
-    background:url('/resources/img/warning_24.png') no-repeat center left;
+    background:url('../img/warning_24.png') no-repeat center left;
     padding:2px;
     padding-left:20px;
     font-weight:700;
@@ -60,7 +60,7 @@
 
 }
 .logout_24 {
-  background-image:url('/resources/img/logout_24.png') !important;
+  background-image:url('../img/logout_24.png') !important;
 }
 #titleHeader {
     color:#000;

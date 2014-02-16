@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 translations = {
-    PROCYMO_LOGO: "../resources/img/logoProcymo.png",
+    PROCYMO_LOGO: "/resources/img/logoProcymo.png",
     //Texts
     CYMO_TECNOLOGIA : "Cymo Gestão & Perfomance",
     WELCOME_TEXT: "Bem-vindo ao atendimento online da Cymo. Se você já está cadastrado, digite seu e-mail e senha para acessar sua conta.",

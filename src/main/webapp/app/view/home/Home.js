@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Ext.define('Helpdesk.view.dashboard.Dashboard',{
+Ext.define('Helpdesk.view.home.Home',{
     extend: 'Ext.container.Container',
     layout: 'border',
-    alias: 'widget.dashboard',
+    alias: 'widget.home',
     requires: [
-      'Helpdesk.view.dashboard.MainHeader','Helpdesk.view.Translation'  
+      'Helpdesk.view.home.MainHeader','Helpdesk.view.Translation'  
     ],
     items: [
         {

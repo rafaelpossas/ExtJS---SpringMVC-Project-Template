@@ -8,6 +8,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+                    var homeURL = '${ctx}';
+        </script>
         <!-- Framework -->
         <script src="<s:url value="/extjs"/>/ext-all-dev.js"></script>
         <!-- Locales -->
@@ -15,9 +18,6 @@
         <!-- CSS -->
         <link href="<s:url value="/extjs" />/resources/css/ext-all-gray.css" rel="stylesheet" type="text/css" />
         <link href="<s:url value="/resources" />/css/main.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript">
-            var homeURL = '${ctx}';
-        </script>
 
         <script src="<s:url value="/app"/>/app.js"></script>
 

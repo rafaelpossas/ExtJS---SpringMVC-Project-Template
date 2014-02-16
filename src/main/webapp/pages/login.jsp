@@ -6,21 +6,22 @@
 <input type="hidden" name="logged" id="logged" value="<%=request.getAttribute("logged")%>">
 <input type="hidden" name="client" id="client" value="<%=request.getAttribute("client")%>">
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- Framework -->
-    <script src="<s:url value="/extjs"/>/ext-all-dev.js"></script>
-    <!-- Locales -->
-    <script src="<s:url value="/app"/>/locale/locale.js"></script>
-    <!-- CSS -->
-    <link href="<s:url value="/extjs" />/resources/css/ext-all-gray.css" rel="stylesheet" type="text/css" />
-    <link href="<s:url value="/resources" />/css/main.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
-        var homeURL = '${ctx}';
-    </script>
-    <script src="<s:url value="/app"/>/login.js"></script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var homeURL = '${ctx}';
+        </script>
+        <!-- Framework -->
+        <script src="<s:url value="/extjs"/>/ext-all-dev.js"></script>
+        <!-- Locales -->
+        <script src="<s:url value="/app"/>/locale/locale.js"></script>
+        <!-- CSS -->
+        <link href="<s:url value="/extjs" />/resources/css/ext-all-gray.css" rel="stylesheet" type="text/css" />
+        <link href="<s:url value="/resources" />/css/main.css" rel="stylesheet" type="text/css" />
 
-</head>
-<body>
-</body>
+        <script src="<s:url value="/app"/>/login.js"></script>
+
+    </head>
+    <body>
+    </body>
 </html>

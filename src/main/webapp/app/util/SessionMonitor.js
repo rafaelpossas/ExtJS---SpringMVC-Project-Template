@@ -1,4 +1,8 @@
-
+/*
+ * @Author Rafael Pôssas
+ * Sessions monitor will create a trigger that will check if the application is idle
+ * 
+ */
 Ext.define('Helpdesk.util.SessionMonitor', {
     singleton: true,
     interval: 1000 * 10, // run every 10 seconds.
