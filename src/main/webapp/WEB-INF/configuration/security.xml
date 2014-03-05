@@ -34,7 +34,7 @@
     <security:jdbc-user-service id="userService"
                                 data-source-ref="dataSource"
                                 users-by-username-query="SELECT USERNAME,PASSWORD, ISENABLED FROM USER WHERE USERNAME = ?"
-                                authorities-by-username-query="SELECT USERNAME,USER_ROLE FROM USER WHERE USERNAME = ?" />
+                                authorities-by-username-query="SELECT USERNAME,'USER' FROM USER WHERE USERNAME = ?" />
 
     <security:authentication-manager>
         <security:authentication-provider

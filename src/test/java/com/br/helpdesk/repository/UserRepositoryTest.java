@@ -48,7 +48,6 @@ public class UserRepositoryTest {
         user.setPassword("1234");
         user.setClient(client);
         user.setEnabled(true);
-        user.setUserRole("USER");
         userRepository.save(user);
     }
 

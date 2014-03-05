@@ -5,6 +5,7 @@
 <input type="hidden" name="user" id="user" value="<%=request.getAttribute("user")%>">
 <input type="hidden" name="logged" id="logged" value="<%=request.getAttribute("logged")%>">
 <input type="hidden" name="client" id="client" value="<%=request.getAttribute("client")%>">
+<input type="hidden" name="email" id="email" value="<%=request.getAttribute("email")%>">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,7 +19,7 @@
         <!-- CSS -->
         <link href="<s:url value="/extjs" />/resources/css/ext-all-gray.css" rel="stylesheet" type="text/css" />
         <link href="<s:url value="/resources" />/css/main.css" rel="stylesheet" type="text/css" />
-
+        
         <script src="<s:url value="/app"/>/app.js"></script>
 
     </head>

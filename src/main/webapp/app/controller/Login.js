@@ -23,7 +23,7 @@ Ext.define('Helpdesk.controller.Login', {
             'loginform form textfield[id=password]': {
                 keypress: this.onTextfieldKeyPress
             },
-            'mainheader button#logout': {
+            'mainheader #logout': {
                 click: this.onButtonClickLogout
             }
         });

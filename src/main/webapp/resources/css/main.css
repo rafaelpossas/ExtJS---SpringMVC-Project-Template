@@ -20,26 +20,32 @@
 }
 
 .pt_BR {
-  background-image:url('../img/pt_BR.png') !important;
+    background-image:url('../img/pt_BR.png') !important;
 }
 .en{
-  background-image:url('../img/en.png') !important;
+    background-image:url('../img/en.png') !important;
 }
 
 .es {
-  background-image:url('../img/es.png') !important;
+    background-image:url('../img/es.png') !important;
 }
 .key {
-  background-image:url('../img/login_24.png') !important;
+    background-image:url('../img/login_24.png') !important;
 }
 .cancel_24 {
-  background-image:url('../img/cancel_24.png') !important;
+    background-image:url('../img/cancel_24.png') !important;
 }
 .cancel_16 {
-  background-image:url('../img/cancel_16.png') !important;
+    background-image:url('../img/cancel_16.png') !important;
 }
 .submit_16{
-  background-image:url('../img/submit_16.png') !important;
+    background-image:url('../img/submit_16.png') !important;
+}
+.profile_16{
+    background-image:url('../img/profile_16.png') !important
+}
+.logout_16{
+    background-image:url('../img/logout_16.png') !important
 }
 .capslock{
     background:url('../img/warning_24.png') no-repeat center left;
@@ -48,7 +54,95 @@
     font-weight:700;
 }
 
+
+.logout_24 {
+    background-image:url('../img/logout_24.png') !important;
+}
+#titleHeader {
+    color:#000;
+    font-size:20px;
+    font-weight:bold;
+    font-family:'Lucida Grande', Arial, Sans;
+}
 /*Custom Buttons*/
+.tab-button{
+    display:inline-block;
+    text-align:center !important;
+    height:35px;
+    width:86px;
+    text-decoration:none !important;
+    color:#777777;
+    font-family:Arial !important;
+    font-size:12px !important;
+    font-weight:bold !important;
+    font-style:normal !important;
+    line-height:40px;
+    text-indent:0;
+    
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #dfdfdf) );
+    background:-moz-linear-gradient( center top, #d1d1d1 5%, #dfdfdf 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#dfdfdf');
+    background-color:#d1d1d1;
+    -webkit-border-top-left-radius:15px;
+    -moz-border-radius-topleft:15px;
+    border-top-left-radius:15px;
+    -webkit-border-top-right-radius:15px;
+    -moz-border-radius-topright:15px;
+    border-top-right-radius:15px;
+    -webkit-border-bottom-right-radius:0px;
+    -moz-border-radius-bottomright:0px;
+    border-bottom-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -moz-border-radius-bottomleft:0px;
+    border-bottom-left-radius:0px;
+    text-indent:0;
+    border:1px solid #d1d1d1;
+}
+.tab-button-pressed{
+    -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+    background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+    background-color:#3d94f6;
+    -webkit-border-top-left-radius:15px;
+    -moz-border-radius-topleft:15px;
+    border-top-left-radius:15px;
+    -webkit-border-top-right-radius:15px;
+    -moz-border-radius-topright:15px;
+    border-top-right-radius:15px;
+    -webkit-border-bottom-right-radius:0px;
+    -moz-border-radius-bottomright:0px;
+    border-bottom-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -moz-border-radius-bottomleft:0px;
+    border-bottom-left-radius:0px;
+    border:1px solid #337fed;
+    color:#ffffff !important;
+
+}
+.tab-button:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #d1d1d1) );
+    background:-moz-linear-gradient( center top, #dfdfdf 5%, #d1d1d1 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#d1d1d1');
+    background-color:#dfdfdf;
+    cursor: pointer;
+}
+.tab-button-pressed:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6) );
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background-color:#1e62d0;
+    cursor: pointer;
+}
+
+
+
 .blue_button {
     background: #1b376c !important;
     color: #ffffff;
@@ -59,12 +153,6 @@
     cursor: pointer;
 
 }
-.logout_24 {
-  background-image:url('../img/logout_24.png') !important;
-}
-#titleHeader {
-    color:#000;
-    font-size:20px;
-    font-weight:bold;
-    font-family:'Lucida Grande', Arial, Sans;
-}
+
+
+/* This button was generated using CSSButtonGenerator.com */

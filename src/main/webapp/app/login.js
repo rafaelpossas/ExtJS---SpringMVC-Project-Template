@@ -17,7 +17,7 @@ Ext.application({
         var userName = document.getElementById("user").value;
         var logged = document.getElementById("logged").value;
         var client = document.getElementById("client").value;
-        if (logged == "true") {
+        if (logged === "true") {
             window.location.href = "../" + homeURL ;
         } else {
             this.viewport = Ext.create('Ext.container.Viewport', {

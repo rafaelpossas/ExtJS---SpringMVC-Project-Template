@@ -11,4 +11,5 @@ import org.springframework.data.repository.CrudRepository;
  * To change this template use File | Settings | File Templates.
  */
 public interface UserRepository extends CrudRepository<User,Long> {
+    User findByUserName(String username);
 }

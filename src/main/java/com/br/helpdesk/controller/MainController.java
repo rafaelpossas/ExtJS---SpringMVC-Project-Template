@@ -1,6 +1,8 @@
 package com.br.helpdesk.controller;
 
+import com.br.helpdesk.model.User;
 import com.br.helpdesk.repository.TicketRepository;
+import com.br.helpdesk.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +25,18 @@ public class MainController {
     public static final String ACCOUNT_DISABLED = "accountdisabled";
     @Resource
     private TicketRepository ticketRepository;
+    @Resource
+    private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getHome() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView("home");
+        User user = userRepository.findByUserName(auth.getName());
         modelAndView.addObject("user", auth.getName());
         modelAndView.addObject("logged", true);
-        modelAndView.addObject("client", "cymo");
+        modelAndView.addObject("client", user.getClient().getId());
+        modelAndView.addObject("email", user.getEmail());
         return modelAndView;
     }
 
@@ -39,9 +45,11 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView("login");
         if (!auth.getName().equals("anonymousUser")) {
+            User user = userRepository.findByUserName(auth.getName());
             modelAndView.addObject("user", auth.getName());
             modelAndView.addObject("logged", true);
-            modelAndView.addObject("client", "cymo");
+            modelAndView.addObject("client", user.getClient().getId());
+            modelAndView.addObject("email", user.getEmail());
         } else {
             modelAndView.addObject("logged", false);
             modelAndView.addObject("user", "anonymousUser");

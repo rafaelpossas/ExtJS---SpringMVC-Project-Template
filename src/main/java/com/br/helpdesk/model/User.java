@@ -1,5 +1,6 @@
 package com.br.helpdesk.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -11,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USER")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
@@ -28,25 +29,19 @@ public class User {
     @Column(name = "PASSWORD",nullable = false)
     private String password;
 
-    @Basic
-    @Column(name="USER_ROLE",nullable = false)
-    private String userRole;
-
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID",nullable = false)
     private Client client;
+    
 
     @Basic
     @Column(name="ISENABLED")
     private Boolean isEnabled;
+    
+    @Basic
+    @Column(name="EMAIL")
+    private String email;
 
-    public String getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
 
     public String getUserName() {
         return userName;
@@ -95,4 +90,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
