@@ -19,16 +19,16 @@ public class Client {
     private Long id;
 
     @Basic
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "NAME")
+    private String name;
 
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {

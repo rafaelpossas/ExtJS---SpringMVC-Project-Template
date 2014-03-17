@@ -30,7 +30,29 @@ translations = {
     SESSION_TIMEOUT_TEXT: "Sua sessão irá automaticar expirar após 15 minutos de inatividade.Se sua sessão expirar, qualquer dado que não foi salvo será perdido e você será automaticamente redirecionado à tela de login</br></br> Se você quer continuar logado clique em no botão 'Continuar Logado' </br></br>",
     CONTINUE_WORKING: 'Continuar logado',
     YOUR_SESSION_WILL_EXPIRE: 'Sua sessão irá expirar em ',
-    SECOND: 'Segundo'
+    SECOND: 'Segundo',
+    OPENED_TICKETS : 'Tickets Abertos',
+    CLOSED_TICKETS : 'Tickets Fechados',
+    USERS: 'Usuários',
+    TICKETS: 'Tickets',
+    CLOSE: 'Fechar',
+    NAME: 'Nome',
+    EMAIL: 'E-Mail',
+    GROUP: 'Grupo',
+    CLIENT: 'Cliente',
+    SAVE: 'Salvar',
+    CANCEL: 'Cancelar',
+    ADD_NEW_USER: 'Adicionar novo Usuário',
+    ADD: 'Adicionar',
+    EDIT: 'Editar',
+    PICTURE: 'Imagem',
+    INFORMATION: 'Informação',
+    NOTHING_TO_SAVE: 'Não há nada a ser salvo, o registo já está atualizado',
+    SAVED_WITH_SUCCESS: 'salvo(a) com sucesso',
+    UPDATED_WITH_SUCCESS: 'atualizado(a) com sucesso',
+    DELETED_WITH_SUCCESS: 'removido(a) com sucesso',
+    DELETE: 'Remover',
+    DELETE_CONFIRMATION: 'Você tem certeza que deseja remover o registro?'
     
 };
 

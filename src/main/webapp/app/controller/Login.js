@@ -1,7 +1,23 @@
 /* 
- * Controller responsável por executar o login e redirecionar a aplicação para página principal
- * O controller escuta o evento do botão submit dentro do form da página inicial, e quando clicado
- * esse botão executa a função de submit do form
+ * @Author: rafaelpossas
+ * 
+ * This controller is responsible for creating the login view, listening for the events
+ * dispatched by this view and redirecting the user to the main application, moreover
+ * it will parse and display any errors returned from the server and/or dispatched by 
+ * the login form.
+ * 
+ * The form has a Caps Lock warning that will be shown to the user whenever the key
+ * is active on the keyboard. The function which this resposibility was assigned is
+ * onTextfieldKeyPress. This function will listen for every character typed by the user
+ * hence if this character is in uppercase the tooltip will be showed.
+ * 
+ * This controller was declared in the login.js file which can be located at the root
+ * folder of the application.
+ * 
+ * Views:
+ *    view/login/Login.js
+ *    view/login/LoginForm.js
+ *    view/login/CapsLockTooltip.js
  */
 Ext.define('Helpdesk.controller.Login', {
     extend: 'Ext.app.Controller',
@@ -39,20 +55,19 @@ Ext.define('Helpdesk.controller.Login', {
         });
     },
     onTextfieldKeyPress: function(field, e, options) {
-        var charCode = e.getCharCode(); // #1
-        var capsLockTooltip;
-        if ((e.shiftKey && charCode >= 97 && charCode <= 122) || // #2
+        var charCode = e.getCharCode(); 
+        if ((e.shiftKey && charCode >= 97 && charCode <= 122) || 
                 (!e.shiftKey && charCode >= 65 && charCode <= 90)) {
 
-            if (this.getCapslockTooltip() === undefined) { // #3
-                Ext.widget('capslocktooltip');           // #4
+            if (this.getCapslockTooltip() === undefined) { 
+                Ext.widget('capslocktooltip');           
             }
-            this.getCapslockTooltip().show(); // #5
+            this.getCapslockTooltip().show(); 
 
         } else {
 
-            if (this.getCapslockTooltip() !== undefined) { // #6
-                this.getCapslockTooltip().hide();        // #7
+            if (this.getCapslockTooltip() !== undefined) { 
+                this.getCapslockTooltip().hide();        
             }
         }
 
@@ -72,17 +87,6 @@ Ext.define('Helpdesk.controller.Login', {
             success: function(obj, action) {
                 Ext.get(form.getEl()).unmask(); // Remove a máscara de carregamento
                 window.location.href = "../" + homeURL;
-                /*
-                 Ext.Ajax.request({
-                 url: 'home',
-                 params: {
-                 },
-                 success: function(response) {
-                 var text = response.responseText;
-                 // process server response here
-                 }
-                 });
-                 */
             },
             failure: function(form, action) {
                 var obj = Ext.JSON.decode(action.response.responseText);

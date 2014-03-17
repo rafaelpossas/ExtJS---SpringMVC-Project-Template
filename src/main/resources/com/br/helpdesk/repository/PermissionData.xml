@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <Menu id="1" text="Menu Test 1" iconCls="" class_name="TestClass"/>
+    <User_Group id="1" name="Grupo 1" />
+    <Menu id="2" text="Menu Test 2" iconCls="" class_name="TestClass"/>
+    <User_Group id="2" name="Grupo 2"/>
+
+    <Permission user_group="1" menu="1"/>
+  
+
+</dataset>

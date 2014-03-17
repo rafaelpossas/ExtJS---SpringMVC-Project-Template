@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    
+    <Menu id="1" text="Menu Test 1"   icon_cls="" class_name="TestClass" parent_menu="[NULL]"/>
+    <Menu id="2" text="Menu Test 1.1" icon_cls="" class_name="TestClass" parent_menu="1"/>
+    <Menu id="3" text="Menu Test 1.2" icon_cls="" class_name="TestClass" parent_menu="1"/>
+    <Menu id="4" text="Menu Test 1.3" icon_cls="" class_name="TestClass" parent_menu="1"/>
+  
+
+</dataset>

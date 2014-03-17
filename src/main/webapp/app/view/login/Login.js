@@ -72,8 +72,7 @@ Ext.define('Helpdesk.view.login.Login', {
                                     xtype: "button",
                                     text: translations.SIGN_IN,
                                     cls: 'blue_button',
-                                    scale: "medium",
-                                    baseCls: 'null'
+                                    scale: "medium"
 
                                 },
                                 {

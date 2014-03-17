@@ -26,7 +26,7 @@ Ext.define('Helpdesk.view.home.MainHeader', {
             src: homeURL + translations.PROCYMO_LOGO,
             border: 0,
             style: 'margin-right: 30px;',
-            height:50,
+            height: 50,
             width: 200
         },
         {
@@ -39,10 +39,12 @@ Ext.define('Helpdesk.view.home.MainHeader', {
         {
             xtype: 'button',
             text: 'Tickets',
-            itemId: 'tickets',
+            itemId: 'ticket',
             baseCls: 'tab-button'
         },
-        '->',
+        {
+            xtype: 'tbfill'
+        },
         {
             xtype: 'container',
             height: '100%',
@@ -62,6 +64,13 @@ Ext.define('Helpdesk.view.home.MainHeader', {
                     iconCls: 'profile_16',
                     style: 'border-style: none !important;background: transparent !important;',
                     text: 'Meu Perfil'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'settings',
+                    iconCls: 'config_16',
+                    style: 'border-style: none !important;background: transparent !important;',
+                    text: 'Configurações'
                 },
                 {
                     xtype: 'button',

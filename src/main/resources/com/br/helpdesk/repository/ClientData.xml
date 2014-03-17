@@ -1,6 +1,6 @@
 <dataset>
     <Client id="1" description="Cymo Tecnologia em Gestão"/>
 
-    <User id="1" name="Rafael Carvalhaes Pôssas" username="rafaelpossas" password="1234" client_id="1" isEnabled="true" user_role="USER"/>
+    <User id="1" name="Rafael Carvalhaes Pôssas" username="rafaelpossas" password="1234" client_id="1" isEnabled="true"/>
 
 </dataset>

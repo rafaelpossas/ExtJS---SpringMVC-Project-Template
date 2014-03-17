@@ -46,8 +46,8 @@ public class UserRepositoryTest {
         User user = new User();
         user.setUserName("rafaelpossas");
         user.setPassword("1234");
-        user.setClient(client);
-        user.setEnabled(true);
+       // user.setClient(client);
+        user.setIsEnabled(true);
         userRepository.save(user);
     }
 

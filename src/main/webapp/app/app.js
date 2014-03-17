@@ -5,23 +5,24 @@
  */
 
 Ext.application({
-    requires: ['Helpdesk.view.Viewport', 'Helpdesk.util.SessionMonitor', 'Helpdesk.util.Router','Helpdesk.Globals'],
+    requires: ['Helpdesk.view.Viewport', 'Helpdesk.util.Util', 'Helpdesk.util.SessionMonitor', 'Helpdesk.util.Router', 'Helpdesk.Globals','Helpdesk.proxy.Base'],
     name: 'Helpdesk',
     enableQuickTips: true,
     appProperty: 'Current', 
     controllers: [
-        'Users', 'Login', 'Translation', 'Home', 'Tickets'
+        'User', 'Login', 'Translation', 'Home', 'Ticket','Settings','UserGroup','Client'
     ],
     enableRouter: true,
     routes: {
         '/': 'home#index',
-        'tickets': 'tickets#list'
+        'ticket': 'ticket#list',
+        'settings':'settings#index',
+        'user': 'user#list'
     },
     init: function() {
     },
     launch: function() {
         this.viewport = Ext.create('Helpdesk.view.Viewport');
-
         Helpdesk.util.SessionMonitor.start(); // Starts the session monitor
         Helpdesk.util.Router.on({
             routemissed: function(token) {
@@ -42,10 +43,10 @@ Ext.application({
              *  renders user.Edit view.
              */
             dispatch: function(token, match, params, controller) {
-                var view, viewClass, action,
-                viewport = Ext.ComponentQuery.query('viewport')[0];
-                //target      = viewport.down('#viewport-target'),
-                navToolbar = viewport.down('#main-nav-toolbar');
+                /*
+                var view, viewClass, action;
+                target = Helpdesk.Current.viewport.down('#viewport-target'),
+                        navToolbar = Helpdesk.Current.viewport.down('#main-nav-toolbar');
 
                 // adjust controller and action names    
                 action = Ext.String.capitalize(match.action);
@@ -56,14 +57,14 @@ Ext.application({
 
                 if (viewClass) {
 
-                    // create view
+                    //  create view
                     view = Ext.create(viewClass, {
                         border: false
                     });
 
                     // clear target and add new view
-                    // target.removeAll();
-                    //target.add(view);
+                    target.removeAll();
+                    target.add(view);
 
                     // adjust top toolbar
 
@@ -71,6 +72,7 @@ Ext.application({
                 if (navToolbar.child('#' + controller)) {
                     navToolbar.child('#' + controller).toggle(true);
                 }
+                */
             }
         });
     }

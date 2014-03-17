@@ -10,5 +10,6 @@
     <mvc:resources location="/resources/" mapping="/resources/**" />
     <mvc:resources location="/app/" mapping="/app/**" />
     <mvc:resources location="/extjs/" mapping="/extjs/**" />
+   
 
 </beans>

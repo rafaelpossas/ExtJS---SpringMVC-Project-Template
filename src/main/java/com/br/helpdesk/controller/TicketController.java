@@ -8,14 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created with IntelliJ IDEA.
- * User: rafaelpossas
- * Date: 11/14/13
- * Time: 11:06 PM
- * To change this template use File | Settings | File Templates.
- */
 @Controller
 @RequestMapping("/ticket")
 public class TicketController {
@@ -24,7 +18,7 @@ public class TicketController {
     private TicketRepository ticketRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Ticket> getAllTickets() {
+    public @ResponseBody List<Ticket> getAllTickets() {
         return ticketRepository.findByIsOpen(true);
     }
 }

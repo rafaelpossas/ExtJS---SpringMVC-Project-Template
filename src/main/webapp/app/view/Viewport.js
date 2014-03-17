@@ -4,12 +4,39 @@
  * and open the template in the editor.
  */
 Ext.define('Helpdesk.view.Viewport', {
-  extend: 'Ext.container.Viewport',
-  layout: 'card',
-  alias: 'widget.mainviewport',
-  items: [
-      {
-          xtype: 'home'
-      }
-  ]
+    extend: 'Ext.container.Viewport',
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
+    alias: 'widget.mainviewport',
+    requires: [
+        'Helpdesk.view.home.MainHeader', 'Helpdesk.view.Translation', 'Helpdesk.view.home.Home', 'Helpdesk.view.ticket.Ticket',
+        'Helpdesk.view.settings.Settings', 'Helpdesk.view.server.ServerError'
+    ],
+    items: [
+        {
+            xtype: 'mainheader'
+        },
+        {
+            xtype: 'container',
+            layout: 'card',
+            itemId: 'maincardpanel',
+            flex: 1,
+            items: [
+                {
+                    xtype: 'servererror'
+                },
+                {
+                    xtype: 'home'
+                },
+                {
+                    xtype: 'ticket',
+                },
+                {
+                    xtype: 'settings'
+                }
+            ]
+        }
+    ]
 });

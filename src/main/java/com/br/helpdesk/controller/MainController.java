@@ -35,7 +35,7 @@ public class MainController {
         User user = userRepository.findByUserName(auth.getName());
         modelAndView.addObject("user", auth.getName());
         modelAndView.addObject("logged", true);
-        modelAndView.addObject("client", user.getClient().getId());
+      //  modelAndView.addObject("client", user.getClient().getId());
         modelAndView.addObject("email", user.getEmail());
         return modelAndView;
     }

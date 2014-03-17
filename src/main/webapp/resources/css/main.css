@@ -1,5 +1,7 @@
 /* Login Styles */
-
+.default_background{
+    background-color: #e0e0e0 !important;
+}
 .loginDockbar {
     background-color: dimgray;
     border-color: dimgray;
@@ -32,20 +34,92 @@
 .key {
     background-image:url('../img/login_24.png') !important;
 }
-.cancel_24 {
-    background-image:url('../img/cancel_24.png') !important;
-}
-.cancel_16 {
-    background-image:url('../img/cancel_16.png') !important;
-}
 .submit_16{
     background-image:url('../img/submit_16.png') !important;
 }
 .profile_16{
     background-image:url('../img/profile_16.png') !important
 }
+.profile_32{
+    background-image:url('../img/profile_32.png') !important
+}
 .logout_16{
     background-image:url('../img/logout_16.png') !important
+}
+.close_32{
+    background-image:url('../img/close_32.png') !important
+}
+.menu_16{
+    background-image:url('../img/menu_16.png') !important
+}
+.home_16{
+    background-image:url('../img/home_16.png') !important
+}
+.config_16{
+    background-image:url('../img/config_16.png') !important
+}
+.users_32{
+    background-image:url('../img/users_32.png') !important
+}
+
+.ticket_32{
+    background-image:url('../img/ticket_32.png') !important
+}
+.add_16{
+    background-image:url('../img/add_16.png') !important
+}
+.add_24{
+    background-image:url('../img/add_24.png') !important
+}
+.add_32{
+    background-image:url('../img/add_32.png') !important
+}
+.delete_16{
+    background-image:url('../img/delete_16.png') !important
+}
+.delete_24{
+    background-image:url('../img/delete_24.png') !important
+}
+.delete_32{
+    background-image:url('../img/delete_32.png') !important
+}
+.edit_16{
+    background-image:url('../img/edit_16.png') !important
+}
+.edit_24{
+    background-image:url('../img/edit_24.png') !important
+}
+.edit_32{
+    background-image:url('../img/edit_32.png') !important
+}
+.search_16{
+    background-image:url('../img/search_16.png') !important
+}
+.search_24{
+    background-image:url('../img/search_24.png') !important
+}
+.search_32{
+    background-image:url('../img/search_32.png') !important
+}
+
+.save_16{
+    background-image:url('../img/save_16.png') !important
+}
+.save_24{
+    background-image:url('../img/save_24.png') !important
+}
+.save_32{
+    background-image:url('../img/save_32.png') !important
+}
+
+.cancel_16{
+    background-image:url('../img/cancel_16.png') !important
+}
+.cancel_24{
+    background-image:url('../img/cancel_24.png') !important
+}
+.cancel_32{
+    background-image:url('../img/cancel_32.png') !important
 }
 .capslock{
     background:url('../img/warning_24.png') no-repeat center left;
@@ -78,7 +152,7 @@
     font-style:normal !important;
     line-height:40px;
     text-indent:0;
-    
+
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -145,12 +219,28 @@
 
 .blue_button {
     background: #1b376c !important;
-    color: #ffffff;
     height: 30px;
-    font-size: 16px;
     padding: 2.5px 8px 2.5px 8px;
+
+}
+.blue_button .x-btn-inner{
+    color: #ffffff !important;
+    font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
+}
+.settings_sidemenu_button{
+    border-style: none !important;
+    background: transparent !important;
+    background-color: #e0e0e0 !important;
+    background-image: none !important;
+}
+.settings_sidemenu_button .x-btn-inner{
+    text-align: left !important;
+    font-size: 14px !important;
+}
+.settings_sidemenu_button:hover{
+    background-color: #d1d1d1 !important;
+    border-style: none !important;
 
 }
 

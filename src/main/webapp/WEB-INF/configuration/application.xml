@@ -17,7 +17,18 @@
         <property name="prefix" value="/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!-- JSON Converters -->
+    <bean id="jsonHttpMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+    </bean>
 
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonHttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
 
     <mvc:annotation-driven />
 
