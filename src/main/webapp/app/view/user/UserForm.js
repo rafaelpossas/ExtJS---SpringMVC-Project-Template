@@ -6,7 +6,7 @@
 Ext.define('Helpdesk.view.user.UserForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.userform',
-    requires: ['Helpdesk.util.Util', 'Helpdesk.view.user.UserGroupComboBox','Helpdesk.view.client.ClientComboBox'],
+    requires: ['Helpdesk.util.Util', 'Helpdesk.view.usergroup.UserGroupComboBox', 'Helpdesk.view.client.ClientComboBox'],
     bodyPadding: 5,
     layout: {
         type: 'hbox',
@@ -27,13 +27,7 @@ Ext.define('Helpdesk.view.user.UserForm', {
             items: [
                 {
                     xtype: 'hiddenfield',
-                    fieldLabel: 'Label',
                     name: 'id'
-                },
-                {
-                    xtype: 'hiddenfield',
-                    fieldLabel: 'IsEnabled',
-                    name: 'isEnabled'
                 },
                 {
                     fieldLabel: translations.NAME,
@@ -42,9 +36,14 @@ Ext.define('Helpdesk.view.user.UserForm', {
                 },
                 {
                     fieldLabel: translations.USER,
-                    name: 'userName'
+                    name: 'userName',
+                    itemId: 'userName',
+                    vtype: 'uniqueUserName',
+                    msgTarget: 'under',
+                    enableKeyEvents: true
                 },
                 {
+                    inputType: 'password',
                     fieldLabel: translations.PASSWORD,
                     name: 'password'
                 },
@@ -52,20 +51,6 @@ Ext.define('Helpdesk.view.user.UserForm', {
                     fieldLabel: translations.EMAIL,
                     maxLength: 100,
                     name: 'email'
-                },
-                {
-                    xtype: 'usergroupcombobox',
-                    listeners: {
-                        select: function(combo, records, eOpts) {
-                            var form = this.up('form');
-                            var record = form.getRecord();
-                            var userGroup = Helpdesk.util.Util.copy(records[0]);
-                            record.set('userGroup', userGroup);
-                            form.updateRecord(record);
-
-                        }
-                    }
-
                 },
                 {
                     xtype: 'clientcombobox',
@@ -87,7 +72,22 @@ Ext.define('Helpdesk.view.user.UserForm', {
                     name: 'picture',
                     allowBlank: true,
                     beforeLabelTextTpl: ''
+                },
+                {
+                    xtype: 'checkbox',
+                    fieldLabel: 'Ativo?',
+                    name: 'isEnabled',
+                    inputValue: true,
+                    uncheckedValue: false
+                },
+                {
+                    xtype: 'checkbox',
+                    fieldLabel: 'Admin?',
+                    name: 'isAdmin',
+                    inputValue: true,
+                    uncheckedValue: false
                 }
+
             ]
         },
         {

@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.br.helpdesk.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 
@@ -25,38 +27,51 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 @Entity
 @Table(name = "USER")
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.ANY, fieldVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.ANY)
-public class User implements Serializable{
+public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
     @Basic
-    @Column(name="NAME")
+    @Column(name = "NAME")
     private String name;
     @Basic
-    @Column(name = "USERNAME",unique = true)
+    @Column(name = "USERNAME", unique = true)
     private String userName;
 
     @Basic
-    @Column(name = "PASSWORD",nullable = false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
-    
+
     @Basic
-    @Column(name="ISENABLED")
+    @Column(name = "ISENABLED")
     private Boolean isEnabled;
-    
+
     @Basic
-    @Column(name="EMAIL")
+    @Column(name = "ISADMIN", nullable = false)
+    private Boolean isAdmin;
+
+    @Basic
+    @Column(name = "EMAIL")
     private String email;
-    
+
     @ManyToOne
-    @JoinColumn(name="CLIENT_ID")
+    @JoinColumn(name = "CLIENT_ID")
     private Client client;
-    
-    @ManyToOne
-    @JoinColumn(name="USER_GROUP_ID",nullable=false)
-    private UserGroup userGroup;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "USER_TYPE", nullable = true)
+    private UserType userType;
+
+    @PrePersist
+    public void prePersist() {
+        if (userType == null) //We set default value in case if the value is not set yet.
+        {
+            userType = UserType.CLIENT;
+        }
+    }
 
     /**
      * @return the id
@@ -157,16 +172,30 @@ public class User implements Serializable{
     }
 
     /**
-     * @return the userGroup
+     * @return the isAdmin
      */
-    public UserGroup getUserGroup() {
-        return userGroup;
+    public Boolean getIsAdmin() {
+        return isAdmin;
     }
 
     /**
-     * @param userGroup the userGroup to set
+     * @param isAdmin the isAdmin to set
      */
-    public void setUserGroup(UserGroup userGroup) {
-        this.userGroup = userGroup;
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    /**
+     * @return the userType
+     */
+    public UserType getUserType() {
+        return userType;
+    }
+
+    /**
+     * @param userType the userType to set
+     */
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

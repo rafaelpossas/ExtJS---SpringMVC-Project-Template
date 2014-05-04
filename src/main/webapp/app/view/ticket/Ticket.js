@@ -7,25 +7,28 @@ Ext.define('Helpdesk.view.ticket.Ticket', {
     extend: 'Ext.container.Container',
     layout: {
         type: 'border'
-        //align: 'stretch'
+                //align: 'stretch'
     },
     alias: 'widget.ticket',
     requires: [
-        'Helpdesk.view.Translation','Helpdesk.view.ticket.TicketSideMenu','Helpdesk.view.ticket.TicketMainPanel'
+        'Helpdesk.view.Translation', 'Helpdesk.view.ticket.TicketSideMenu', 'Helpdesk.view.ticket.TicketMainPanel','Helpdesk.view.ticket.TicketsList'
     ],
     items: [
         {
             xtype: 'ticketsidemenu',
-            width: 185,
-            region: 'west',
-            collapsible: 'true'
+            width: 140,
+            region: 'west'
         },
         {
-            xtype: 'ticketmainpanel',
-            width: '100%',
-            region: 'center'
-
+            xtype: 'container',
+            region: 'center',
+            layout: 'card',
+            itemId: 'ticketcardpanel',
+            items: [
+                {
+                    xtype: 'ticketslist'
+                }
+            ]
         }
-
     ]
 });

@@ -6,10 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
-           
-    <mvc:resources location="/resources/" mapping="/resources/**" />
-    <mvc:resources location="/app/" mapping="/app/**" />
-    <mvc:resources location="/extjs/" mapping="/extjs/**" />
+
    
 
 </beans>

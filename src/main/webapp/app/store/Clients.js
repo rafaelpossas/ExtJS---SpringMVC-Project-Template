@@ -4,19 +4,14 @@
  * and open the template in the editor.
  */
 Ext.define('Helpdesk.store.Clients', {
-    extend: 'Helpdesk.store.BasicStore',
+    extend: 'Ext.data.Store',
     requires: ['Helpdesk.model.Client'],
     model: 'Helpdesk.model.Client',
     storeId: 'clients',
     autoLoad: false,
-    constructor: function(config) {
-        // applyIf means only copy if it doesn't exist
-        Ext.applyIf(config, {
-            proxy: Ext.create('Helpdesk.proxy.Base', {
-                url: 'client'
-            })
-        });
-        this.callParent([config]);
+    proxy:{
+        type: 'base',
+        url: 'client'
     }
 
 });

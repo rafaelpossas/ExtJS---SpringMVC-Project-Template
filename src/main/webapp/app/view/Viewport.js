@@ -12,7 +12,7 @@ Ext.define('Helpdesk.view.Viewport', {
     alias: 'widget.mainviewport',
     requires: [
         'Helpdesk.view.home.MainHeader', 'Helpdesk.view.Translation', 'Helpdesk.view.home.Home', 'Helpdesk.view.ticket.Ticket',
-        'Helpdesk.view.settings.Settings', 'Helpdesk.view.server.ServerError'
+        'Helpdesk.view.settings.Settings', 'Helpdesk.view.server.ServerError','Helpdesk.view.profile.Profile'
     ],
     items: [
         {
@@ -31,10 +31,13 @@ Ext.define('Helpdesk.view.Viewport', {
                     xtype: 'home'
                 },
                 {
-                    xtype: 'ticket',
+                    xtype: 'ticket'
                 },
                 {
                     xtype: 'settings'
+                },
+                {
+                    xtype: 'profile'
                 }
             ]
         }

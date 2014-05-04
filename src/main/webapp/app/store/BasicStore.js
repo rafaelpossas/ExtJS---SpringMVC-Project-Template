@@ -6,6 +6,7 @@
 Ext.define('Helpdesk.store.BasicStore', {
     extend: 'Ext.data.Store',
     autoload: false,
+    entityName: 'Entidade',
     constructor: function(config) {
         // applyIf means only copy if it doesn't exist
         Ext.applyIf(config, {
@@ -59,6 +60,33 @@ Ext.define('Helpdesk.store.BasicStore', {
                 console.log(err);
             }
         }
+
+    },
+    onCreateRecords: function(records, operation, success) {
+        if (success) {
+            Ext.Msg.show({
+                title: translations.INFORMATION,
+                msg: this.entityName + ' ' + translations.SAVED_WITH_SUCCESS,
+                buttons: Ext.Msg.OK,
+                icon: Ext.Msg.INFO
+            });
+        }
+    },
+    onUpdateRecords: function(records, operation, success) {
+        if (success) {
+            Ext.Msg.alert(translations.INFORMATION, this.entityName + ' ' + translations.UPDATED_WITH_SUCCESS);
+        }
+    },
+    onDestroyRecords: function(records, operation, success) {
+        if (success) {
+            Ext.Msg.alert(translations.INFORMATION, this.entityName + ' ' + translations.DELETED_WITH_SUCCESS);
+            this.callParent(arguments);
+        }
+    },
+    customRequest: function(operation, requesturl, oldurl, callback, scope) {
+        this.getProxy().url = requesturl;
+        this.getProxy().doRequest(operation, callback, scope);
+        this.getProxy().url = oldurl;
 
     }
 

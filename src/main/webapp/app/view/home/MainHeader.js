@@ -39,7 +39,7 @@ Ext.define('Helpdesk.view.home.MainHeader', {
         {
             xtype: 'button',
             text: 'Tickets',
-            itemId: 'ticket',
+            itemId: 'mytickets',
             baseCls: 'tab-button'
         },
         {
@@ -55,29 +55,32 @@ Ext.define('Helpdesk.view.home.MainHeader', {
             items: [
                 {
                     xtype: 'button',
-                    text: Helpdesk.Globals.email,
+                    itemId: 'userEmail',
+                    text: user.email,
                     style: 'cursor: default !important;border-style: none !important;background: transparent !important;'
                 },
                 {
                     xtype: 'button',
-                    itemId: 'myProfile',
+                    itemId: 'profile',
                     iconCls: 'profile_16',
                     style: 'border-style: none !important;background: transparent !important;',
-                    text: 'Meu Perfil'
+                    text: translations.MY_PROFILE,
+                    toggleGroup: 'main-nav'
                 },
                 {
                     xtype: 'button',
                     itemId: 'settings',
                     iconCls: 'config_16',
+                    toggleGroup: 'main-nav',
                     style: 'border-style: none !important;background: transparent !important;',
-                    text: 'Configurações'
+                    text: translations.SETTINGS
                 },
                 {
                     xtype: 'button',
                     style: 'border-style: none !important;background: transparent !important;',
                     iconCls: 'logout_16',
                     itemId: 'logout',
-                    text: 'Sair'
+                    text: translations.LOGOUT
                 }
             ]
 

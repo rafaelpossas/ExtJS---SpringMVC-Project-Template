@@ -3,14 +3,16 @@ package com.br.helpdesk.controller;
 import com.br.helpdesk.model.User;
 import com.br.helpdesk.repository.TicketRepository;
 import com.br.helpdesk.repository.UserRepository;
+import java.io.IOException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,15 +31,14 @@ public class MainController {
     private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getHome() {
+    public String getHome(Model model) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        ModelAndView modelAndView = new ModelAndView("home");
         User user = userRepository.findByUserName(auth.getName());
-        modelAndView.addObject("user", auth.getName());
-        modelAndView.addObject("logged", true);
-      //  modelAndView.addObject("client", user.getClient().getId());
-        modelAndView.addObject("email", user.getEmail());
-        return modelAndView;
+        ObjectMapper mapper = new ObjectMapper();
+        user.setPassword("*"); //Hiding Password from JSP page
+        String userString = mapper.writer().writeValueAsString(user);
+        model.addAttribute("user",userString);
+        return "home";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -45,15 +46,9 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView("login");
         if (!auth.getName().equals("anonymousUser")) {
-            User user = userRepository.findByUserName(auth.getName());
-            modelAndView.addObject("user", auth.getName());
             modelAndView.addObject("logged", true);
-            modelAndView.addObject("client", user.getClient().getId());
-            modelAndView.addObject("email", user.getEmail());
         } else {
             modelAndView.addObject("logged", false);
-            modelAndView.addObject("user", "anonymousUser");
-            modelAndView.addObject("client", "none");
         }
         return modelAndView;
     }

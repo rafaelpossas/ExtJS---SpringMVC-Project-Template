@@ -13,6 +13,15 @@ Ext.define('Helpdesk.util.Dialogs',{
             icon: Ext.Msg.QUESTION,
             fn: callback
         });
+       },
+       confirmationDialog: function(callback){
+           Ext.Msg.show({
+               title: translations.CONFIRMATION+"?",
+               msg: translations.CANCEL_CONFIRMATION,
+               buttons: Ext.Msg.YESNO,
+               icon: Ext.Msg.Question,
+               fn: callback
+           });
        }
    } 
 });

@@ -121,6 +121,26 @@
 .cancel_32{
     background-image:url('../img/cancel_32.png') !important
 }
+
+.category_16{
+    background-image:url('../img/category_16.png') !important
+}
+.category_24{
+    background-image:url('../img/category_24.png') !important
+}
+.category_32{
+    background-image:url('../img/category_32.png') !important
+}
+
+.filter_clear_16{
+    background-image:url('../img/filter_clear_16.png') !important
+}
+.filter_clear_24{
+    background-image:url('../img/filter_clear_24.png') !important
+}
+.filter_clear_32{
+    background-image:url('../img/filter_clear_32.png') !important
+}
 .capslock{
     background:url('../img/warning_24.png') no-repeat center left;
     padding:2px;
@@ -228,21 +248,198 @@
     font-size: 16px;
     font-weight: bold;
 }
-.settings_sidemenu_button{
+.blue_button:hover {
+    background: #1b376c !important;
+    height: 30px;
+    padding: 2.5px 8px 2.5px 8px;
+
+}
+.sidemenu-button{
     border-style: none !important;
     background: transparent !important;
     background-color: #e0e0e0 !important;
     background-image: none !important;
 }
-.settings_sidemenu_button .x-btn-inner{
+.sidemenu-button .x-btn-inner{
     text-align: left !important;
     font-size: 14px !important;
+    font-weight: bold !important;
 }
-.settings_sidemenu_button:hover{
-    background-color: #d1d1d1 !important;
+.sidemenu-button:hover,.x-btn-sidemenu-button-pressed {
+    background-color: #ffffff !important;
     border-style: none !important;
 
 }
+.invalid_field_without_underline {
+    background-image: none;
+}
+
+.x-action-col-cell img {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+.ticket-grid {
+    margin:0px;
+    padding:5px;
+    width:100%;
+}.ticket-grid table{
+    border-collapse: separate;
+    border-spacing: 0;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+.ascending{
+    background-image: url('../img/sort_asc.gif');
+}
+.descending{
+    background-image: url('../img/sort_desc.gif');
+}
+.ticket-grid tr:last-child td:last-child {
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+}
+.ticket-grid table tr:first-child td:first-child {
+    -moz-border-radius-topleft:2px;
+    -webkit-border-top-left-radius:2px;
+    border-top-left-radius:0px;
+}
+.ticket-grid table th:first-child  {
+    -moz-border-radius-topleft:10px;
+    -webkit-border-top-left-radius:10px;
+    border-top-left-radius:10px;
+}
+.ticket-grid tr:last-child th:last-child{
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius:10px;
+    border-top-right-radius:10px;
+}
+.ticket-grid tr:hover{
+    background-color:#d3e9ff;
+
+}
+.ticket-grid td > span:hover{
+    cursor:pointer;
+    text-decoration: underline;
+
+}
 
 
-/* This button was generated using CSSButtonGenerator.com */
+
+.ticket-grid td{
+    vertical-align:middle;
+
+    border:1px solid #EBECEB;
+    border-width:0px 0px 1px 0px;
+    text-align:left;
+    padding:7px;
+    font-size:12px;
+    font-family:lsans,"Lucida Sans","Lucida Grande",Lucida,"Lucida Sans Unicode",sans-serif;
+    font-weight:normal;
+    color:#000000;
+}
+.ticket-grid th{
+    background-color:#EBECEB;
+    border:0px solid #000000;
+    text-align: left;
+    font-size:12px;
+    height: 30px;
+    padding: 5px;
+    font-family:Arial;
+    font-weight:bold;
+    background-repeat: no-repeat;
+    background-position: center right;
+
+
+}
+.ticket-grid th:hover{
+    background-color:#d3e9ff;
+    cursor: pointer;
+}
+.ticket-grid tr:first-child td:first-child{
+    border-width:0px 0px 1px 0px;
+}
+.ticket-grid-paging{
+    background-color: #EBECEB;
+    width: 100%;
+    overflow: hidden;
+    font-family:Arial;
+    font-weight:bold;
+    height: 20px;
+    -moz-border-radius-bottomleft:10px;
+    -webkit-border-bottom-left-radius:10px;
+    border-bottom-left-radius:10px;
+    padding: 2px 5px 2px 5px;
+    -moz-border-radius-bottomright:10px;
+    -webkit-border-bottom-right-radius:10px;
+    border-bottom-right-radius:10px;
+}
+.ticket-grid-paging img{
+    cursor: pointer;
+}
+.no-hover-pointer:hover{
+    cursor: default;
+}
+
+.tooltip{
+    margin:8px;
+    padding:8px;
+    border:1px solid black;
+    background-color: #e0e0e0;
+    position: absolute;
+    z-index: 2;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    box-shadow: 10px 10px 50px #888888;
+}
+.inner_search_icon_textfield
+{ 
+    background: url('../img/search_16.png') no-repeat 2 2 !important;
+    padding-left: 20px !important;
+}
+.add_ticket{
+    background-color: rgba(0, 0, 0, 0);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(238, 238, 238)), to(rgb(204, 204, 204)));
+    border-color: #BBB #BBB #999;
+    border-style: solid;
+    border-width: 1px;
+}
+.add_ticket .x-btn-inner{
+    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+.add_ticket:hover{
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#bbbbbb));
+    border-color: #BBB #BBB #999;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #DDD;
+    text-decoration: none;
+}
+.html_success_message{
+    padding: 10px 0 10px 3px;
+    background: #defbd5;
+    border: 1px solid #caeaaf;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+.html_failure_message{
+    padding: 10px 0 10px 3px;
+    background: #d87166;
+    border: 1px solid #d87166;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+

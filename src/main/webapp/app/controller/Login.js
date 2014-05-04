@@ -33,6 +33,9 @@ Ext.define('Helpdesk.controller.Login', {
             'loginform button#submit': {
                 click: this.onSubmit
             },
+            'loginview button#signin': {
+                click: this.onSignInClick
+            },
             'loginform form textfield': {
                 specialkey: this.onTextfieldSpecialKey
             },
@@ -45,8 +48,14 @@ Ext.define('Helpdesk.controller.Login', {
         });
 
     },
-    onButtonClickLogout: function(button, e, options) {     
-        
+    onSignInClick: function(button, e, options) {
+        var win = Ext.create('Helpdesk.view.user.Profile');
+        win.setTitle(translations.ADD_NEW_USER);
+        win.down('form').loadRecord(Ext.create('Helpdesk.model.User'));
+        win.show();
+    },
+    onButtonClickLogout: function(button, e, options) {
+
         Ext.Ajax.request({
             url: 'logout',
             success: function(response) {
@@ -55,19 +64,19 @@ Ext.define('Helpdesk.controller.Login', {
         });
     },
     onTextfieldKeyPress: function(field, e, options) {
-        var charCode = e.getCharCode(); 
-        if ((e.shiftKey && charCode >= 97 && charCode <= 122) || 
+        var charCode = e.getCharCode();
+        if ((e.shiftKey && charCode >= 97 && charCode <= 122) ||
                 (!e.shiftKey && charCode >= 65 && charCode <= 90)) {
 
-            if (this.getCapslockTooltip() === undefined) { 
-                Ext.widget('capslocktooltip');           
+            if (this.getCapslockTooltip() === undefined) {
+                Ext.widget('capslocktooltip');
             }
-            this.getCapslockTooltip().show(); 
+            this.getCapslockTooltip().show();
 
         } else {
 
-            if (this.getCapslockTooltip() !== undefined) { 
-                this.getCapslockTooltip().hide();        
+            if (this.getCapslockTooltip() !== undefined) {
+                this.getCapslockTooltip().hide();
             }
         }
 
@@ -84,9 +93,11 @@ Ext.define('Helpdesk.controller.Login', {
         formTopElement.mask(translations.AUTHENTICATING, 'loading'); // Adiciona a máscara de carregamento 
         form.submit({
             method: 'POST',
-            success: function(obj, action) {
+            scope: this,
+            success: function(obj, action,success) {
                 Ext.get(form.getEl()).unmask(); // Remove a máscara de carregamento
                 window.location.href = "../" + homeURL;
+
             },
             failure: function(form, action) {
                 var obj = Ext.JSON.decode(action.response.responseText);

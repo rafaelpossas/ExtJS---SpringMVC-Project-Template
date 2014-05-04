@@ -806,7 +806,6 @@ Ext.define('Ext.data.AbstractStore', {
 
         if (needsSync && me.fireEvent('beforesync', operations) !== false) {
             options = options || {};
-
             me.proxy.batch(Ext.apply(options, {
                 operations: operations,
                 listeners: me.getBatchListeners()
@@ -866,7 +865,6 @@ Ext.define('Ext.data.AbstractStore', {
         me.lastOptions = options;
 
         operation = new Ext.data.Operation(options);
-
         if (me.fireEvent('beforeload', me, operation) !== false) {
             me.loading = true;
             me.proxy.read(operation, me.onProxyLoad, me);

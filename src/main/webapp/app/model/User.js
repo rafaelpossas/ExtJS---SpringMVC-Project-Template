@@ -7,7 +7,6 @@
  */
 Ext.define('Helpdesk.model.User', {
     extend: 'Ext.data.Model',
-    requires: ['Helpdesk.model.UserGroup'],
     idProperty: 'id',
     fields: [
         {name: 'name'},
@@ -16,8 +15,7 @@ Ext.define('Helpdesk.model.User', {
         {name: 'client'},
         {name: 'isEnabled'},
         {name: 'email'},
-        {name: 'userGroup'},
-        {name: 'userGroupName', mapping: 'userGroup.name',persist : false},
+        {name: 'userType'},
         {name: 'clientName', mapping: 'client.name',persist : false}
 
     ]

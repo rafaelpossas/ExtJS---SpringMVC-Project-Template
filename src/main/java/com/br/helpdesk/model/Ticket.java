@@ -64,11 +64,11 @@ public class Ticket {
     }
 
 
-    public Boolean getOpen() {
+    public Boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setOpen(Boolean open) {
+    public void setIsOpen(Boolean open) {
         isOpen = open;
     }
 

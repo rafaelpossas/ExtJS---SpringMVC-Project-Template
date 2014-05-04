@@ -2,10 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<input type="hidden" name="user" id="user" value="<%=request.getAttribute("user")%>">
 <input type="hidden" name="logged" id="logged" value="<%=request.getAttribute("logged")%>">
-<input type="hidden" name="client" id="client" value="<%=request.getAttribute("client")%>">
-<input type="hidden" name="email" id="client" value="<%=request.getAttribute("email")%>">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

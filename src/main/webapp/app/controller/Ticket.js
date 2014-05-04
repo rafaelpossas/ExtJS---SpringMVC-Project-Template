@@ -15,18 +15,29 @@
  */
 Ext.define('Helpdesk.controller.Ticket', {
     extend: 'Ext.app.Controller',
+    requires: ['Helpdesk.store.Tickets', 'Helpdesk.model.TicketContainer'],
     views: [
         'ticket.Ticket', 'ticket.TicketMainPanel'
     ],
-    stores : ['Menu'],
+    stores: ['Tickets'],
+    config: {
+        allTickets: 0,
+        myTickets: 0,
+        openedTickets: 0,
+        currentView: ''
+    },
     init: function() {
         this.control({
-            'ticket': {
-                beforeactivate : this.onPanelRender
+            'ticketslist #ticketLiveSearch': {
+                change: {
+                    fn: this.onTicketLiveSearch,
+                    buffer: 500
+                }
             },
-            'ticketsidemenuitem': {
-                select: this.onTreepanelSelect,
-                itemclick: this.onTreepanelItemClick
+            'ticketslist ticketgrid': {
+                render: this.onTicketGridRender,
+                pageNext: this.onTicketGridPageNext,
+                pagePrev: this.onTicketGridPagePrev
             }
         });
     },
@@ -37,67 +48,186 @@ Ext.define('Helpdesk.controller.Ticket', {
         },
         {
             ref: 'mainPanel',
-            selector: 'ticket > ticketmainpanel'
+            selector: 'tickets > ticketmainpanel'
+        },
+        {
+            ref: 'ticketSideMenu',
+            selector: 'ticket > ticketsidemenu'
+        },
+        {
+            ref: 'mainHeaderTicketButton',
+            selector: 'mainheader button#mytickets'
+        },
+        {
+            ref: 'allTicketsButton',
+            selector: 'ticketsidemenu button#alltickets'
+        },
+        {
+            ref: 'myTicketsButton',
+            selector: 'ticketsidemenu button#mytickets'
+        },
+        {
+            ref: 'openedTicketsButton',
+            selector: 'ticketsidemenu button#openedtickets'
+        },
+        {
+            ref: 'ticketGrid',
+            selector: 'ticketgrid'
         }
     ],
+    onTicketGridRender: function() {
+        console.log("Ticket List Rendered");
+    },
+    onTicketGridPageNext: function() {
+        var scope = this;
+        if (this.getCurrentView() === "MyTickets") {
+            this.getTicketGrid().store.findByIsOpenAndUserWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getMyTickets());
+                scope.getTicketGrid().fireEvent("pageNextLoaded");
+            }, true, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        } else if (this.getCurrentView() === "AllTickets") {
+            this.getTicketGrid().store.findAllWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getAllTickets());
+                scope.getTicketGrid().fireEvent("pageNextLoaded");
+            }, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        } else if (this.getCurrentView() === "OpenedTickets") {
+            this.getTicketGrid().store.findByIsOpenWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getOpenedTickets());
+                scope.getTicketGrid().fireEvent("pageNextLoaded");
+            }, true, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        }
+
+
+    },
+    onTicketGridPagePrev: function() {
+        var scope = this;
+        if (this.getCurrentView() === "MyTickets") {
+            this.getTicketGrid().store.findByIsOpenAndUserWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getMyTickets());
+                scope.getTicketGrid().fireEvent("pagePrevLoaded");
+            }, true, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        } else if (this.getCurrentView() === "AllTickets") {
+            this.getTicketGrid().store.findAllWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getAllTickets());
+                scope.getTicketGrid().fireEvent("pagePrevLoaded");
+            }, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        } else if (this.getCurrentView() === "OpenedTickets") {
+            this.getTicketGrid().store.findByIsOpenWithPaging(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getOpenedTickets());
+                scope.getTicketGrid().fireEvent("pagePrevLoaded");
+            }, true, this.getTicketGrid().getCurrentStart(), this.getTicketGrid().getCurrentLimit());
+        }
+
+    },
+    onTicketLiveSearch: function(cmp, newValue, oldValue) {
+        $(".ticket-grid td > span").removeClass('x-livesearch-match');
+        if (newValue !== '') {
+            $(".ticket-grid td > span:contains(\'" + newValue + "\')").addClass('x-livesearch-match');
+        }
+
+    },
+    onAllTicketsClick: function() {
+        var scope = this;
+
+        if (this.getCardPanel().getLayout().getActiveItem() !== Helpdesk.Globals.ticketview) {
+            this.list();
+        }
+        if (this.getAllTicketsButton().pressed === false) {
+            this.getAllTicketsButton().toggle();
+        }
+        this.getTicketGrid().store.findAllWithPaging(function() {
+            scope.getTicketGrid().store.countAll(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getAllTickets());
+            });
+        }, 0, this.getTicketGrid().getPageSize());
+        this.setCurrentView("AllTickets");
+    },
+    onMyTicketsClick: function() {
+        var scope = this;
+        if (this.getCardPanel().getLayout().getActiveItem() !== Helpdesk.Globals.ticketview) {
+            this.list();
+        }
+        if (this.getMyTicketsButton().pressed === false) {
+            this.getMyTicketsButton().toggle();
+        }
+        this.getTicketGrid().store.findByIsOpenAndUserWithPaging(function() {
+            scope.getTicketGrid().store.countByIsOpenAndUser(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getMyTickets());
+
+            }, true);
+        }, true, 0, this.getTicketGrid().getPageSize());
+        this.setCurrentView("MyTickets");
+    },
+    onOpenedTicketsClick: function() {
+        var scope = this;
+        if (this.getCardPanel().getLayout().getActiveItem() !== Helpdesk.Globals.ticketview) {
+            this.list();
+        }
+        if (this.getOpenedTicketsButton().pressed === false) {
+            this.getOpenedTicketsButton().toggle();
+        }
+        this.getTicketGrid().store.findByIsOpenWithPaging(function() {
+            scope.getTicketGrid().store.countByIsOpen(function(result) {
+                scope.getTicketGrid().setCurrentSize(scope.getOpenedTickets());
+
+            }, true);
+        }, true, 0, this.getTicketGrid().getPageSize());
+        this.setCurrentView("OpenedTickets");
+    },
     list: function() {
         this.getCardPanel().getLayout().setActiveItem(Helpdesk.Globals.ticketview);
-    },
-    onTreepanelSelect: function(selModel, record, index, options) {
-        var mainPanel = this.getMainPanel();
-
-        var newTab = mainPanel.items.findBy(// Checking if the tab already exists
-                function(tab) {
-                    return tab.title === record.get('text');
-                });
-
-        if (!newTab) { // The tab doesn' exist hence we need to create a new one
-            newTab = mainPanel.add({
-                xtype: record.raw.className,
-                closable: true, // #7
-                iconCls: record.get('iconCls'),
-                title: record.get('text')
-            });
+        if (this.getMainHeaderTicketButton().pressed === false) {
+            this.getMainHeaderTicketButton().toggle();
         }
-        mainPanel.setActiveTab(newTab); // Adding the panel to the tabpanel
-    },
-    /*
-     * In case the user closes the tab panel, and the menu is selected he won't
-     * need to select another menu and come back to previous menu to open again,
-     * the click render will also open the new tab.
-     */
-    onTreepanelItemClick: function(view, record, item, index, event, options) {
-        this.onTreepanelSelect(view, record, index, options);
-    },
-    /*
-     * Whenever the side menu is rendered, this function will look for the menu
-     * items that will be appended to the component.
-     * 
-     */
-    onPanelRender: function(abstractcomponent, options) {
-        this.getMenuStore().loadMenu(function(records, op, success) {
-            var menuPanel = Ext.ComponentQuery.query('ticketsidemenu')[0];
-            menuPanel.removeAll(); // Removing the older menu because we are creating a fresh one
-            Ext.each(records, function(root) {
-                var menu = Ext.create('Helpdesk.view.ticket.TicketSideMenuItem'); // Creating the root of the tree
-                Ext.each(root.items(), function(itens) { // Adding items accordingly to the item search
-
-                    Ext.each(itens.data.items, function(item) {
-
-                        menu.getRootNode().appendChild({// The icons and the text are extracted from the entity
-                            text: translations[item.get('text')],
-                            leaf: true,
-                            iconCls: item.get('iconCls'),
-                            id: item.get('id'),
-                            className: item.get('className')
-                        });
-                    });
-                });
-                menuPanel.add(menu); // Adding the entire menu to his panel
+        if (user.isAdmin) {
+            var myTickets = Ext.widget("button", {
+                text: translations.MY_TICKETS,
+                scale: 'large',
+                itemId: 'mytickets',
+                cls: 'sidemenu-button',
+                toggleGroup: 'side-nav',
+                pressedCls: 'sidemenu-button-pressed',
+                width: 140
             });
-        });
+            this.getTicketSideMenu().insert(0, myTickets);
+            var allTickets = Ext.widget("button", {
+                text: translations.ALL_TICKETS,
+                scale: 'large',
+                itemId: 'alltickets',
+                cls: 'sidemenu-button',
+                toggleGroup: 'side-nav',
+                pressedCls: 'sidemenu-button-pressed',
+                width: 140
+            });
+            this.getTicketSideMenu().insert(1, allTickets);
+            var openedTickets = Ext.widget("button", {
+                text: translations.OPENED_TICKETS,
+                scale: 'large',
+                itemId: 'openedtickets',
+                cls: 'sidemenu-button',
+                toggleGroup: 'side-nav',
+                pressedCls: 'sidemenu-button-pressed',
+                width: 140
+            });
+            this.getTicketSideMenu().insert(2, openedTickets);
+            var ticketContainer = Ext.ModelManager.getModel('Helpdesk.model.TicketContainer');
+            ticketContainer.load(user.id, {
+                callback: function(record, op, success) {
+                    this.setAllTickets(record.get('allTickets'));
+                    this.setMyTickets(record.get('myTickets'));
+                    this.setOpenedTickets(record.get('openedTickets'));
+                    this.getAllTicketsButton().setText('(' + this.getAllTickets() + ')&nbsp' + translations.ALL_TICKETS);
+                    this.getMyTicketsButton().setText(' (' + this.getMyTickets() + ')&nbsp' + translations.MY_TICKETS);
+                    this.getOpenedTicketsButton().setText(' (' + this.getOpenedTickets() + ')&nbsp' + translations.OPENED_TICKETS);
+                },
+                scope: this
+            });
+
+        }
 
     }
+
+
 });
 
 

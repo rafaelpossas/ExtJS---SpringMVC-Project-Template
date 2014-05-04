@@ -11,7 +11,7 @@ Ext.define('Helpdesk.view.settings.Settings', {
         //align: 'stretch'
     },
     requires: [
-        'Helpdesk.view.Translation','Helpdesk.view.settings.SettingsSideMenu','Helpdesk.view.user.Users'
+        'Helpdesk.view.Translation','Helpdesk.view.settings.SettingsSideMenu','Helpdesk.view.user.Users','Helpdesk.view.category.Categories'
     ],
     items: [
         {
@@ -26,11 +26,13 @@ Ext.define('Helpdesk.view.settings.Settings', {
             itemId: 'settingscardpanel',
             items:[
                 {
-                    xtype: 'container',
-                    html: 'Profile Panel'
+                    html: "This is general panel"
                 },
                 {
                     xtype: 'users'
+                },
+                {
+                    xtype: 'categories'
                 }
             ]
         }

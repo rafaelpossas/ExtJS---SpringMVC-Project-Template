@@ -12,10 +12,11 @@
 Ext.define('Helpdesk.controller.Home', {
     extend: 'Ext.app.Controller',
     views: ['home.Home'],
+    stores: ['Users'],
     init: function() {
         this.control({
             'mainviewport': {
-                aftershow: this.onViewportRendered
+                render: this.onViewportRendered
             },
             /*
              * Will listen for all button in the main header,
@@ -23,11 +24,16 @@ Ext.define('Helpdesk.controller.Home', {
              * page accordingly.
              */
             'mainheader button': {
-                                                
                 click: this.onMainNavClick
             },
             'settingssidemenu button': {
                 click: this.onSettingsMenuClick
+            },
+            'profilesidemenu button': {
+                click: this.onProfileMenuClick
+            },
+            'ticketsidemenu button':{
+                click: this.onTicketSideMenuClick
             }
         });
         this.application.on({
@@ -43,20 +49,31 @@ Ext.define('Helpdesk.controller.Home', {
      */
     refs: [
         {
+            ref: 'mainheaderEmail',
+            selector: 'mainheader button#userEmail'
+        },
+        {
             ref: 'cardPanel',
             selector: 'viewport > container#maincardpanel'
         },
         {
             ref: 'serverError',
             selector: 'servererror > #errorPanel'
+        },
+        {
+            ref: 'mainHeaderHomeButton',
+            selector: 'mainheader button#home'
         }
     ],
-    onError: function(error){
+    onError: function(error) {
         this.getServerError().update(error);
         this.getCardPanel().getLayout().setActiveItem(Helpdesk.Globals.errorview);
     },
     index: function() {
         this.getCardPanel().getLayout().setActiveItem(Helpdesk.Globals.homeview);
+        if (this.getMainHeaderHomeButton().pressed === false) {
+            this.getMainHeaderHomeButton().toggle();
+        }
     },
     /*
      * This function controls the history router declared in app.js.
@@ -65,16 +82,21 @@ Ext.define('Helpdesk.controller.Home', {
      * can be found in app.js.
      */
     onMainNavClick: function(btn) {
-        if(btn.itemId !== 'logout' && btn.itemId !== 'myProfile'){
-            Ext.Router.redirect(btn.itemId === 'home' ? '' : btn.itemId); 
+        if (btn.itemId !== 'logout') {
+            Ext.Router.redirect(btn.itemId === 'home' ? '' : btn.itemId);
         }
 
     },
-    onSettingsMenuClick: function(btn){
+    onSettingsMenuClick: function(btn) {
+        Ext.Router.redirect(btn.itemId);
+    },
+    onProfileMenuClick: function(btn) {
+        Ext.Router.redirect(btn.itemId);
+    },
+    onTicketSideMenuClick: function(btn){
         Ext.Router.redirect(btn.itemId);
     },
     onViewportRendered: function() {
-
     }
 });
 

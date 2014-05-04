@@ -86,10 +86,8 @@ Ext.define('Helpdesk.util.SessionMonitor', {
     monitorUI: function() {
         var now = new Date();
         var inactive = (now - this.lastActive);
-
         if (inactive >= this.maxInactive) {
             this.stop();
-
             this.window.show();
             this.remaining = 60;  // seconds remaining.
             Ext.TaskManager.start(this.countDownTask);

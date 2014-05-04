@@ -1,14 +1,6 @@
 package com.br.helpdesk.model;
 
 import javax.persistence.*;
-
-/**
- * Created with IntelliJ IDEA.
- * User: rafaelpossas
- * Date: 10/18/13
- * Time: 1:59 PM
- * To change this template use File | Settings | File Templates.
- */
 @Entity
 @Table(name = "CLIENT")
 public class Client {

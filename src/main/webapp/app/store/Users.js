@@ -5,36 +5,21 @@
  */
 Ext.define('Helpdesk.store.Users', {
     extend: 'Ext.data.Store',
+    requires: ['Helpdesk.model.Category'],
     model: 'Helpdesk.model.User',
-    requires: [
-        'Helpdesk.model.User'
-    ],
+    storeId: 'categories',
     autoLoad: false,
-    constructor: function(config) {
-        // applyIf means only copy if it doesn't exist
-        Ext.applyIf(config, {
-            proxy: Ext.create('Helpdesk.proxy.Base', {
-                url: 'user'
-            })
-        });
-        this.callParent([config]);
-    },
-    onCreateRecords: function(records, operation, success) {
-        if (success) {           
-            Ext.Msg.alert(translations.INFORMATION, translations.USER+' '+translations.SAVED_WITH_SUCCESS);
+    remoteSort: false,
+    listeners: {
+        load: function(me, opts) {
+            this.sort('name', 'ASC');
         }
     },
-    onUpdateRecords: function(records, operation, success) {
-        if (success) {
-            Ext.Msg.alert(translations.INFORMATION, translations.USER+' '+translations.UPDATED_WITH_SUCCESS);
-        }
+    proxy:{
+        type: 'base',
+        url: 'user'
     },
-    onDestroyRecords: function(records, operation, success){
-        if(success){
-            Ext.Msg.alert(translations.INFORMATION, translations.USER+' '+translations.DELETED_WITH_SUCCESS);
-            this.removed = {}; // Removed the trigger of the store
-        }
-    },
+    entityName: translations.USER,
     findByUserName: function(callbackFunction, username) {
         this.load({
             url: 'user/' + username,
@@ -43,6 +28,17 @@ Ext.define('Helpdesk.store.Users', {
     },
     findAll: function(callbackFunction) {
         this.load(callbackFunction);
+    },
+    saveProfile: function(profile, callback) {
+        var data = JSON.stringify(profile);
+        $(".html_success_message").remove();
+        $.ajax({type: "put", url: "user/profile", data: data, success: callback});
+    },
+    savePassword: function(profile, callback) {
+        var data = JSON.stringify(profile);
+        $(".html_success_message").remove();
+        $.ajax({type: "put", url: "user/password", data: data, success: callback});
     }
+
 });
 

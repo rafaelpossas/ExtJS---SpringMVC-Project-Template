@@ -31,14 +31,14 @@
 
     <security:global-method-security pre-post-annotations="enabled"/>
 
-    <security:jdbc-user-service id="userService"
+    <security:jdbc-user-service id="userAuthService"
                                 data-source-ref="dataSource"
                                 users-by-username-query="SELECT USERNAME,PASSWORD, ISENABLED FROM USER WHERE USERNAME = ?"
                                 authorities-by-username-query="SELECT USERNAME,'USER' FROM USER WHERE USERNAME = ?" />
 
     <security:authentication-manager>
         <security:authentication-provider
-                user-service-ref="userService" />
+                user-service-ref="userAuthService" />
     </security:authentication-manager>
 
     <bean id="authenticationFailureHandler"

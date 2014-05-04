@@ -11,6 +11,12 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd ">
 
     <context:component-scan base-package="com.br.helpdesk" />
+    
+    <mvc:resources location="/resources/" mapping="/resources/**" />
+    <mvc:resources location="/app/" mapping="/app/**" />
+    <mvc:resources location="/extjs/" mapping="/extjs/**" />
+    
+    <mvc:default-servlet-handler/>
 
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -19,7 +25,7 @@
     </bean>
     <!-- JSON Converters -->
     <bean id="jsonHttpMessageConverter"
-                  class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
     </bean>
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">

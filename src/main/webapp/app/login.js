@@ -14,9 +14,7 @@ Ext.application({
     init: function() {
     },
     launch: function() {
-        var userName = document.getElementById("user").value;
         var logged = document.getElementById("logged").value;
-        var client = document.getElementById("client").value;
         if (logged === "true") {
             window.location.href = "../" + homeURL ;
         } else {

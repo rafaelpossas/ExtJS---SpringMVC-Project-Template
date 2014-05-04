@@ -8,37 +8,13 @@ Ext.define('Helpdesk.view.settings.SettingsSideMenu', {
     layout: 'vbox',
     alias: 'widget.settingssidemenu',
     bodyCls: 'default_background',
+    defaults: {
+        toggleGroup: 'side-nav',
+        allowDepress: false
+    },
     padding: '10 0 10 0',
     border: 0,
     items: [
-        {
-            xtype: 'button',
-            text: 'Profile',
-            scale: 'large',
-            cls: 'settings_sidemenu_button',
-            iconCls: 'profile_32',
-            width: 137
-        },
-        {
-            xtype: 'button',
-            text: translations.USERS,
-            scale: 'large',
-            itemId: 'user',
-            cls: 'settings_sidemenu_button',
-            iconCls: 'users_32',
-            width: 137
-        },
-        {
-            xtype: 'button',
-            text: translations.TICKETS,
-            scale: 'large',
-            cls: 'settings_sidemenu_button',
-            iconCls: 'ticket_32',
-            width: 137
-        },
-        {
-          xtype: 'tbfill'  
-        }
     ]
 });
 

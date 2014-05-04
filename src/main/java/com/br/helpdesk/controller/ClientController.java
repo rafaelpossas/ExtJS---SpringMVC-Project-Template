@@ -6,7 +6,7 @@
 
 package com.br.helpdesk.controller;
 
-import com.br.helpdesk.model.UserGroup;
+import com.br.helpdesk.model.Client;
 import com.br.helpdesk.repository.ClientRepository;
 import java.util.List;
 import javax.annotation.Resource;
@@ -14,6 +14,7 @@ import org.apache.commons.collections.IteratorUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -28,8 +29,13 @@ public class ClientController {
     private ClientRepository clientRepository;
     
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<UserGroup> getAllClients(){
+    public @ResponseBody List<Client> getAllClients(){
         return IteratorUtils.toList(clientRepository.findAll().iterator());
     }
+    @RequestMapping(method = RequestMethod.GET,params = "name")
+    public @ResponseBody List<Client> getClientsByName(@RequestParam(value="name") String name){
+        return clientRepository.findByNameContaining(name);
+    }
+    
     
 }

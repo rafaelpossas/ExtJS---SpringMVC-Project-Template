@@ -9,5 +9,5 @@ Ext.define('Helpdesk.view.home.Home', {
     alias: 'widget.home',
     requires: [
         'Helpdesk.view.Translation'
-    ],
+    ]
 });
