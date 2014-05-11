@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package com.br.helpdesk.util;
-
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.TreeMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
@@ -24,6 +24,8 @@ public class JsonError {
 
     public ModelAndView asModelAndView() {
         MappingJacksonJsonView jsonView = new MappingJacksonJsonView();
-        return new ModelAndView(jsonView, ImmutableMap.of("error", message));
+        Map<String, Object> map = new TreeMap<String, Object>();
+        map.put("error", message);
+        return new ModelAndView(jsonView, map);
     }
 }

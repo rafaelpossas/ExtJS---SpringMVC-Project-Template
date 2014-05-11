@@ -15,7 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * NULL_SAVE_ERROR = Error when a null entity is passed as the argument of the
- * save method NULL_DELETE_ERROR = Error when a null entity is passed as the
+ * save method 
+ * NULL_DELETE_ERROR = Error when a null entity is passed as the
  * argument of the delete method
  */
 public class BaseController {
